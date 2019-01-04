@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      //-----------------------------------------------------------------------
+      window.onload = function() {
+        var x = 100;
+
+        var zeros = [];
+        var ones = [];
+        var twos = [];
+        var threes = [];
+        var fours = [];
+
+        for (var i=0; i<x; i++) {
+          var random = parseInt(Math.random()*5);
+
+          switch (random) {
+            case 0:
+              zeros.push(0);
+              break;
+            case 1:
+              ones.push(0);
+              break;
+            case 2:
+              twos.push(0);
+              break;
+            case 3:
+              threes.push(0);
+              break;
+            case 4:
+              fours.push(0);
+              break;
+            default:
+              console.log('hmm');
+          }
+        }
+
+       var chart = new CanvasJS.Chart("chartContainer", {
+         animationEnabled: true,
+       title: {
+         text: "Random Numbers Visualised, out of "+x+" tests:"
+       },
+         data: [{
+         type: "pie",
+         startAngle: 240,
+         yValueFormatString: "##0.00",
+         indexLabel: "{label} {y}",
+         dataPoints: [
+      {y: zeros.length, label: "Zero:"},
+      {y: ones.length, label: "One:"},
+      {y: twos.length, label: "Two:"},
+      {y: threes.length, label: "Three:"},
+      {y: fours.length, label: "Four:"}
+    ]
+  }]
+});
+chart.render();
+
+}
+    </script>
+  </head>
+  <body >
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </body>
+</html>
